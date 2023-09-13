@@ -1,21 +1,19 @@
-name: Hello World!
+name: Deployment pipeline
 
 on:
   push:
     branches:
       - main
-      
+
 jobs:
-  hello_world_job:
+  simple_deployment_pipeline:
     runs-on: ubuntu-20.04
     steps:
-      - name: Salaam
-        run: |
-          echo "Salam Alaykum!"
-      - name: Now it is 
-        run: |
-          date 
-      - name: Directory content
-        run: | 
-          ls -l     
-             
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+      - name: Install dependencies
+        run: npm install && npm run install-client
+      - name: Check style
+        run: npm run eslint && npm run eslint:client
