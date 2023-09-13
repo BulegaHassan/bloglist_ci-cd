@@ -5,12 +5,16 @@ module.exports = {
     "jest/globals": true,
     "cypress/globals": true,
   },
-  extends: ["eslint:recommended", "plugin:react/recommended"],
+  extends: [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:chai-friendly/recommended",
+  ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 2018,
+    ecmaVersion: 2020,
     sourceType: "module",
   },
   plugins: ["react", "jest", "cypress"],
