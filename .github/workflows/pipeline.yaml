@@ -32,5 +32,6 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           start: npm run start:e2e
+          working-directory: client
           command: npm run test:e2e
           wait-on: http://0.0.0.0:3000
