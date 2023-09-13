@@ -31,7 +31,7 @@ jobs:
       - name: e2e tests with cypress
         uses: cypress-io/github-action@v5
         with:
-          working-directory: client
-          command: npm run test:e2e
-          start: npm run start:e2e
-          wait-on: http://localhost:3000
+            start: npm run start:e2e
+            working-directory: client
+            command: npm run test:e2e
+            wait-on: http://localhost:3000
