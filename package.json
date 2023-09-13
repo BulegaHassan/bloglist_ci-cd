@@ -17,7 +17,7 @@
     "lint:client": "cd client && npm run lint ",
     "test": "cross-env NODE_ENV=test jest   --verbose --runInBand --forceExit --detectOpenHandles",
     "start:test": "cross-env NODE_ENV=test node index.js ",
-    "test:backend": "concurrently --kill-others-on-fail \"npm run start:test\" \" npm run test\""
+    "start:e2e": "concurrently --kill-others-on-fail \"npm run start:test\" \" npm run client\""
   },
   "author": "Hassan Bulega",
   "license": "ISC",
