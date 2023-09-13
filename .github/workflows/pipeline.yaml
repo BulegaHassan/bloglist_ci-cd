@@ -19,3 +19,5 @@ jobs:
         run: npm run eslint && npm run eslint:client
       - name: build
         run: npm run build-client
+      - name: test backend
+        run: npm run start:test && npm run test 
