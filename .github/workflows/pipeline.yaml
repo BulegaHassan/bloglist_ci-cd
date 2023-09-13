@@ -18,4 +18,4 @@ jobs:
       - name: Check style
         run: npm run eslint && npm run eslint:client
       - name: build
-        run: npm run build:client
+        run: npm run build-client
