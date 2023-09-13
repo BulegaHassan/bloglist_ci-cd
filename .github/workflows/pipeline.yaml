@@ -24,4 +24,4 @@ jobs:
       - name: build
         run: npm run build-client
       - name: test backend
-        run: npm run start:test && npm run test 
+        run: npm run test:backend

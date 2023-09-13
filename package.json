@@ -16,7 +16,8 @@
     "eslint:client": " cd client && npm run eslint",
     "lint:client": "cd client && npm run lint ",
     "test": "cross-env NODE_ENV=test jest --verbose --runInBand --forceExit",
-    "start:test": "cross-env NODE_ENV=test node index.js"
+    "start:test": "cross-env NODE_ENV=test node index.js",
+    "test:backend": "concurrently --kill-others-on-fail \"npm run start:test\" \" npm run test\""
   },
   "author": "",
   "license": "ISC",
