@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon index.js",
-    "server": "cross-env NODE_ENV=production node index.js",
+    "install-client": "cd client && npm install",
+    "setup-production": "npm run install-client && npm run build-client && npm install",
+    "dev": "cross-env NODE_ENV=development nodemon index.js --ignore client",
+    "server": "cross-env NODE_ENV=production node index.js --ignore client",
     "client": " cd client && npm start ",
     "build-client": "cd client && npm run build",
     "start": "concurrently --kill-others-on-fail \"npm run server\" \" npm run client\"",
