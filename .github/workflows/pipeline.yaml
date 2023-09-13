@@ -17,3 +17,5 @@ jobs:
         run: npm install && npm run install-client
       - name: Check style
         run: npm run eslint && npm run eslint:client
+      - name: build
+        run: npm run build:client
