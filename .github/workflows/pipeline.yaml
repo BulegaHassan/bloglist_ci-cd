@@ -23,8 +23,8 @@ jobs:
         run: npm run eslint && npm run eslint:client
       - name: build
         run: npm run build-client
-      - name: test backend
-        run: npm run test
       - name: test client
         working-directory: client
         run: npm run test   
+      - name: test backend
+        run: npm run test
