@@ -29,7 +29,14 @@ app.use(express.json())
 app.use('/api/login', loginRouter)
 app.use('/api/blogs', userExtractor, blogsRouter)
 app.use('/api/users', usersRouter)
-
+// check for successful deployment in the pipeline
+app.get("/version", (req, res) => {
+  res.send("1.0.0");  // change this string to ensure a new version deployed
+});
+// Simple health check
+app.get("/health", (req, res) => {
+  res.send("<h1>Ok</h1>");
+});
 if (process.env.NODE_ENV === 'test') {
     const testingRouter = require('./controllers/testing')
     app.use('/api/testing', testingRouter)
