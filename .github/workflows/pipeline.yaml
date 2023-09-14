@@ -25,6 +25,13 @@ jobs:
         run: npm run eslint && npm run eslint:client
       - name: build
         run: npm run build-client
+      - name: Build Failure
+        if: ${{ failure() }}
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+               severity: error
+               details: Build Failed!
+               webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}   
       - name: test client
         working-directory: client
         run: npm run test   
@@ -46,7 +53,14 @@ jobs:
         uses: johnbeynon/render-deploy-action@v0.0.8
         with:          
           service-id: ${{ secrets.RENDER_SERVICE_ID }}
-  
+      - name: Deployment Success
+        if: ${{ success() }}
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+               severity: info
+               details: New Version Deployed
+               webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}         
+
   tag_release:
     needs: [simple_deployment_pipeline, deploy]
     if: ${{ github.event_name == 'push' && !contains(toJson(github.event.commits.*.message), '#skip')}}
@@ -59,4 +73,3 @@ jobs:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
          DEFAULT_BUMP : patch    
          WITH_V: true    
-         
