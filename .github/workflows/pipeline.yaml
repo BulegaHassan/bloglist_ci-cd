@@ -34,3 +34,14 @@ jobs:
             command: npm run e2e
             start:  npm run start:e2e            
             wait-on: http://localhost:3000
+  deploy:
+   name: Deploy bloglist with render
+   if: ${{ github.event_name == 'push' }}
+   runs-on: ubuntu-20.04
+   steps:        
+      - name: Bloglist Render Deployment
+        uses: johnbeynon/render-deploy-action@v0.0.8
+        with:          
+          service-id: ${{ secrets.RENDER_SERVICE_ID }}
+          api-key: ${{ secrets.RENDER_TOKEN }}
+                    
