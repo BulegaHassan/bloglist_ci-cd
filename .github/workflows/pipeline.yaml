@@ -35,11 +35,7 @@ jobs:
         with:
             command: npm run e2e
             start:  npm run start:e2e            
-            wait-on: http://localhost:3000
-      - name: Bump version and push tag
-        uses: anothrNick/github-tag-action@1.67.0 
-        env:
-           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}     
+            wait-on: http://localhost:3000     
            
   deploy:
    name: Deploy bloglist with render
