@@ -43,7 +43,10 @@ jobs:
             command: npm run e2e
             start:  npm run start:e2e            
             wait-on: http://localhost:3000     
-           
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}     
   deploy:
    name: Deploy bloglist with render
    if: ${{ github.event_name == 'push' }}
